@@ -1,0 +1,164 @@
+<div class="container-fluid py-4">
+    <div class="row">
+
+        <div class="row mt-4">
+            <div class="col-lg-7 mb-lg-0 mb-4">
+                <div class="card z-index-2 h-100">
+                    <div class="card-header pb-3 pt-3 bg-transparent">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Correos Aleatorios Temporales</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", cursive;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #contenedor {
+            width: 1283px;
+            height: 376.55px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 2.5cm; /* Desplazamiento a la derecha */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 15px;
+            background-color: #3498db;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #resultado-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #resultado {
+            padding: 10px;
+            background-color: #fff;
+            color: #333;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        #copiarBoton,
+        #refreshBoton {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        #copiarBoton {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        #copiarBoton:hover {
+            background-color: #27ae60;
+        }
+
+        #refreshBoton {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        #refreshBoton:hover {
+            background-color: #2980b9;
+        }
+
+        #copiadoExitoso {
+            color: #2ecc71;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function generarNombreAleatorio() {
+            var longitudNombre = 6;
+            var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var nombreAleatorio = "";
+            for (var i = 0; i < longitudNombre; i++) {
+                var indiceCaracter = Math.floor(Math.random() * caracteres.length);
+                nombreAleatorio += caracteres.charAt(indiceCaracter);
+            }
+            return nombreAleatorio;
+        }
+
+        function generarCorreoAleatorio() {
+            var nombreAleatorio = generarNombreAleatorio();
+            var numeroAleatorio = Math.floor(Math.random() * 9000) + 1000;
+            var correo = nombreAleatorio + numeroAleatorio + "@twmail.com";
+            document.getElementById("resultado").innerHTML = correo;
+        }
+
+        function copiarCorreo() {
+            var resultado = document.getElementById("resultado");
+            var rango = document.createRange();
+            rango.selectNode(resultado);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(rango);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+
+            // Mostrar el mensaje de copiado exitoso
+            var copiadoExitoso = document.getElementById("copiadoExitoso");
+            copiadoExitoso.style.display = "block";
+
+            // Ocultar el mensaje después de 2 segundos
+            setTimeout(function() {
+                copiadoExitoso.style.display = "none";
+            }, 2000);
+        }
+    </script>
+</head>
+<body>
+
+    <div id="contenedor">
+        <h1>Generador de Correos Aleatorios Temporales</h1>
+
+        <button onclick="generarCorreoAleatorio()">Generar Correo Electrónico</button>
+
+        <div id="resultado-container">
+            <div id="resultado">Haz clic en el botón para generar correos electrónicos aleatorios.</div>
+            <button id="copiarBoton" onclick="copiarCorreo()">Copiar Correo</button>
+            <div id="copiadoExitoso">Correo copiado exitosamente</div>
+        </div>
+            <div id="advertencia">
+            ¡Advertencia! Los correos temporales están pensados solo para uso en sitios web sin verificación. Estamos en constante desarrollo...
+        </div>
+    </div>
+
+</body>
+</html>
+           </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
